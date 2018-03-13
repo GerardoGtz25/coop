@@ -1,7 +1,7 @@
 <template>
   <div class="fondo">
     <h1>{{ msg }}</h1>
-    <form @submit="creerMembre">
+    <form @submit="seConnecter">
       <div class="field">
         <p class="control has-icons-right">
           <input v-model="email" class="input" type="email" placeholder="E-mail">
@@ -12,7 +12,7 @@
       </div>
       <div class="field">
         <p class="control has-icons-right">
-          <input class="input" type="password" placeholder="Mot de passe">
+          <input v-model="password" class="input" type="password" placeholder="Mot de passe">
           <span class="icon is-small is-right">
             <i class="fas fa-lock"></i>
           </span>
@@ -20,7 +20,7 @@
       </div>
       <input class="button is-primary" type="submit" value="Creer compte">
     </form>
-    {{status}}
+
   </div>
 </template>
 
@@ -30,35 +30,32 @@ export default {
   data () {
     return {
       msg: "Connexion",
-      status: '',
+      email: '',
+      password: ''
     }
   },
-  mounted () {
-    window.axios.get('ping').then((response) => {
-              this.status = response.data.message
-            }).catch((error) => {
-                alert(error.response.data.error);
-            });
-  },
   methods: {
+    seConnecter(){
+			window.axios.post('members/signin', {
+		        email : this.email,
+		        password: this.password
+		    }).then((response) => {
+		        //this.$store.state.member = response.data;
+		        this.$store.commit('setMember', response.data);
+		        this.$store.commit('setToken', response.data.token);
+
+		        window.axios.defaults.params.token = response.data.token;
+
+		        this.$router.push({path: '/test'});
+		    }).catch((error) => {
+		        alert(error.response.data.error);
+		    });
+		}
 
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  font-weight: 600;
-  font-size: 22px;
-}
-.fondo{
-  background-color: rgba(255,255,255,0.8);
-  border-radius: 5px;
-  width: 600px;
-  padding: 20px;
-  display: block;
-  margin: auto;
-  margin-top: 30px;
-}
+
 </style>

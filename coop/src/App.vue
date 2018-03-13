@@ -39,4 +39,17 @@ body{
   text-align: center;
   color: #2c3e50;
 }
+h1 {
+  font-weight: 600;
+  font-size: 22px;
+}
+.fondo{
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 5px;
+  width: 600px;
+  padding: 20px;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
 </style>

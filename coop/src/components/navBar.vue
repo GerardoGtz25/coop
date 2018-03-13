@@ -6,8 +6,6 @@
     </a>
     <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
       <span></span>
-      <span></span>
-      <span></span>
     </div>
   </div>
 

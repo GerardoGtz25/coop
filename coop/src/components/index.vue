@@ -21,7 +21,7 @@
       </div>
       <div class="field">
         <p class="control has-icons-right">
-          <input class="input" type="password" placeholder="Mot de passe">
+          <input v-model="password" class="input" type="password" placeholder="Mot de passe">
           <span class="icon is-small is-right">
             <i class="fas fa-lock"></i>
           </span>
@@ -47,21 +47,21 @@ export default {
   },
   mounted () {
     window.axios.get('ping').then((response) => {
-              this.status = response.data.message
-            }).catch((error) => {
-                alert(error.response.data.error);
-            });
+      this.status = response.data.message
+    }).catch((error) => {
+      alert(error.response.data.error);
+    });
   },
-  methods : {
+  methods:{
     creerMembre(){
       window.axios.post('members', {
-        fullname : this.fullname,
+        fullname: this.fullname,
         email: this.email,
         password: this.password
       }).then((response) => {
         this.$router.push({path: '/connexion'});
       }).catch((error) => {
-        alert(error);
+        alert(error.response);
       });
     }
   }
@@ -70,17 +70,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  font-weight: 600;
-  font-size: 22px;
-}
-.fondo{
-  background-color: rgba(255,255,255,0.8);
-  border-radius: 5px;
-  width: 600px;
-  padding: 20px;
-  display: block;
-  margin: auto;
-  margin-top: 30px;
-}
+
 </style>
