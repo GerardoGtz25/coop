@@ -2,6 +2,9 @@
   <div class="fondo_completo">
     <div class="contenedor">
       <table class="table is-fullwidth">
+        <tr>
+          <td><h1>{{topic}}</h1></td>
+        </tr>
         <tbody>
           <tr v-for="message in messages.posts" :key="message._id">
             <td>{{message.message}}</td>
@@ -18,7 +21,8 @@ export default {
   data () {
     return {
       messages: '',
-      msg: ''
+      msg: '',
+      topic: ''
     }
   },
 
@@ -34,6 +38,7 @@ export default {
 				}
       }).then((response) => {
         this.messages = response.data
+        this.topic = response.data.topic
       }).catch((error) => {
         //alert(error);
       });
