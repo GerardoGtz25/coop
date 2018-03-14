@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
 import connexion from '@/components/connexion'
-import test from '@/components/test'
+import conversation from '@/components/conversation'
 
 Vue.use(Router)
 
@@ -17,8 +17,8 @@ export default new Router({
       component: index
     },
     {
-      path: '/test',
-      component: test
+      path: '/conversation',
+      component: conversation
     },
     {
       path: '*',

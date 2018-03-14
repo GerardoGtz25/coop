@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <navBar></navBar>
+    <navBar v-if="this.$store.state.token === false"></navBar>
+    <navBar2 v-else></navBar2>
     <router-view/>
   </div>
 </template>
 
 <script>
 import navBar from '@/components/navBar.vue'
+import navBar2 from '@/components/navBar2.vue'
 
 export default {
   name: 'App',
   components:{
-    navBar
+    navBar,
+    navBar2
   	},
 	data () {
 	    return {
@@ -30,6 +33,7 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   height: 100vh;
 }
 #app {

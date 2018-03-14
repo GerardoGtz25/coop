@@ -1,5 +1,5 @@
 <template>
-  <div class="fondo">
+  <div v-if="this.$store.state.token === false" class="fondo">
     <!-- <img src="../assets/logo.png"> -->
     <h1>{{ msg }}</h1>
     <form @submit="creerMembre">
@@ -42,7 +42,7 @@ export default {
       status: '',
       fullname: '',
       email: '',
-      password: ''
+      password: '',
     }
   },
   mounted () {

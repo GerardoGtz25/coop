@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 window.axios = axios.create({
   baseURL: 'http://coop.api.netlor.fr/api/',
   params : {
-  	token : store.state.token
+  	token : false
   },
   headers: { Authorization: 'Token token=0a2d2062c765481a9cfb6f8d28e0b2b7' }
 });

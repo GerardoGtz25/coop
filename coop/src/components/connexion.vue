@@ -1,5 +1,5 @@
 <template>
-  <div class="fondo">
+  <div v-if="this.$store.state.token === false" class="fondo">
     <h1>{{ msg }}</h1>
     <form @submit="seConnecter">
       <div class="field">
@@ -20,7 +20,6 @@
       </div>
       <input class="button is-primary" type="submit" value="Creer compte">
     </form>
-
   </div>
 </template>
 
@@ -46,7 +45,7 @@ export default {
 
 		        window.axios.defaults.params.token = response.data.token;
 
-		        this.$router.push({path: '/test'});
+		        this.$router.push({path: '/conversation'});
 		    }).catch((error) => {
 		        alert(error.response.data.error);
 		    });

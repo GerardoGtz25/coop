@@ -6,13 +6,16 @@
     </a>
     <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
       <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
 
   <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-end">
-      <router-link to="/index" class="navbar-item">S'inscrire</router-link>
-      <router-link to="/connexion" class="navbar-item">Connexion</router-link>
+      <router-link to="/" class="navbar-item">Conversations</router-link>
+      <router-link to="/" class="navbar-item">Members</router-link>
+      <a @click="deconnecter" class="navbar-item">Déconexion</a>
     </div>
   </div>
 </nav>
@@ -20,10 +23,17 @@
 
 <script>
   export default {
-    name: 'navBar',
+    name: 'navBar2',
     data (){
       return{
-
+      }
+    },
+    methods: {
+      deconnecter(){
+        window.axios.delete('members/signout');
+        this.$store.commit('setMember', false);
+        this.$store.commit('setToken', false);
+        this.$router.push({path: '/connexion'});
       }
     }
   }
