@@ -1,7 +1,7 @@
 <template>
   <div v-if="this.$store.state.token === false" class="fondo">
     <h1>{{ msg }}</h1>
-    <form @submit="seConnecter">
+    <form @submit="connecter">
       <div class="field">
         <p class="control has-icons-right">
           <input v-model="email" class="input" type="email" placeholder="E-mail">
@@ -34,18 +34,17 @@ export default {
     }
   },
   methods: {
-    seConnecter(){
+    connecter(){
 			window.axios.post('members/signin', {
 		        email : this.email,
 		        password: this.password
 		    }).then((response) => {
-		        //this.$store.state.member = response.data;
 		        this.$store.commit('setMember', response.data);
 		        this.$store.commit('setToken', response.data.token);
 
 		        window.axios.defaults.params.token = response.data.token;
 
-		        this.$router.push({path: '/conversation'});
+		        this.$router.push({path: '/channels'});
 		    }).catch((error) => {
 		        alert(error.response.data.error);
 		    });

@@ -16,10 +16,20 @@ export default {
     navBar,
     navBar2
   	},
-	data () {
-	    return {
-	    }
-	}
+  created(){
+    this.checkLog();
+    window.bus.$on('log', this.checkLog);
+  },
+  methods : {
+    checkLog() {
+      if( !this.$store.state.member ){
+        this.$router.push({path: '/connexion'});
+      }
+      else {
+        window.axios.defaults.params.token = this.$store.state.token;
+        }
+      }
+    }
 }
 </script>
 

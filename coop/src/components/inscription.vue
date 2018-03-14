@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: 'index',
+  name: 'inscription',
   data () {
     return {
       msg: "S'inscrire",
@@ -61,14 +61,9 @@ export default {
       }).then((response) => {
         this.$router.push({path: '/connexion'});
       }).catch((error) => {
-        alert(error.response);
+        //alert(error.response);
       });
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

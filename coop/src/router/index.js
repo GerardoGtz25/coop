@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/components/index'
+import inscription from '@/components/inscription'
 import connexion from '@/components/connexion'
-import conversation from '@/components/conversation'
+import membres from '@/components/membres'
+import channels from '@/components/channels'
+import messages from '@/components/message'
 
 Vue.use(Router)
 
@@ -13,16 +15,25 @@ export default new Router({
       component: connexion
     },
     {
-      path: '/index',
-      component: index
+      path: '/inscription',
+      component: inscription
     },
     {
-      path: '/conversation',
-      component: conversation
+      path: '/channels',
+      component: channels
+    },
+    {
+      path: '/conversation/:id',
+      name: 'conversation',
+      component: messages
+    },
+    {
+      path: '/membres',
+      component: membres
     },
     {
       path: '*',
-      redirect: '/index'
+      redirect: '/channels'
     }
   ]
 })
