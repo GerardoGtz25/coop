@@ -4,16 +4,14 @@
       <table class="table is-fullwidth">
         <thead>
           <tr>
-            <th>Membres</th>
-            <th></th>
-            <th></th>
+            <th colspan="3">Membres</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="membre in membres" :key="membre._id">
             <td>{{membre.fullname}}</td>
             <td>{{membre.email}}</td>
-            <td><a class="button is-warning" @click ="deleteMembre(membre._id,membre.email)">Supprimer</a></td>
+            <td><a class="button is-warning" @click ="deleteMembre(membre._id, membre.email)">Supprimer</a></td>
           </tr>
         </tbody>
       </table>
@@ -25,7 +23,7 @@ export default {
   name: 'membres',
   data () {
     return {
-			membres : [],
+			membres : []
     }
   },
   created() {
@@ -45,16 +43,14 @@ export default {
 			})
     },
     deleteMembre(id, email) {
-      if (email != this.$store.state.member) {
+      if (email == this.$store.state.member.email) {
         window.axios.delete('members/'+id,{
           params : {
             token : this.$store.state.token
           }
         }).then((response) => {
           this.getMembres()
-        }).catch ((error) => {
-  				 alert(error.data);
-  			})
+        });
       }else {
         alert('vous ne pouvez effacer que votre profil');
       }

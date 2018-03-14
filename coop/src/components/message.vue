@@ -53,7 +53,7 @@ export default {
         this.msg = '';
         this.getMessage()
       }).catch((error) => {
-        alert(error.response);
+        //alert(error.response);
       });
     }
   }
