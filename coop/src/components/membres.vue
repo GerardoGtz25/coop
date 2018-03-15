@@ -44,13 +44,16 @@ export default {
     },
     deleteMembre(id, email) {
       if (email == this.$store.state.member.email) {
-        window.axios.delete('members/'+id,{
-          params : {
-            token : this.$store.state.token
-          }
-        }).then((response) => {
-          this.getMembres()
-        });
+        // window.axios.delete('members/'+id,{
+        //   params : {
+        //     token : this.$store.state.token
+        //   }
+        // }).then((response) => {
+        //   this.getMembres()
+        // }).catch ((error) => {
+  			// 	 alert(error.data);
+  			// })
+        alert('Error bizarre je ne sais pas comme le corriger')
       }else {
         alert('vous ne pouvez effacer que votre profil');
       }
